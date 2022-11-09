@@ -12,7 +12,7 @@ public class DAO{
     public void insertValues(Details details){
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","system","manager");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","user","password");
             String query="insert into details values(?,?,?,?,?,?,?)";
 
             PreparedStatement pstmt = con.prepareStatement(query);
@@ -37,7 +37,7 @@ public class DAO{
         try{
 
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","test","sql");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","user","password");
             Statement  st = con.createStatement();
             String query="delete table emp1 where tokennumber='"+tokenNumber+"';";
             int result=st.executeUpdate(query);
@@ -52,7 +52,7 @@ public class DAO{
     public boolean fetchTable(String tokenNumber){
         try{
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","system","manager");
+            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@127.0.0.1:1521:XE","user","password");
             Statement  st=con.createStatement();
 
             String query="select * from details where tokennumber='"+tokenNumber+"'";
